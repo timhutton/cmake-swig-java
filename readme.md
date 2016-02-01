@@ -16,7 +16,11 @@ Output:
 `124`
 
 Troubleshooting:
-
 * On Windows, if your Java installation is 64-bit then make sure to use a 64-bit C++ compiler.  
   e.g. if you are using Visual Studio 2015: `cmake -G "Visual Studio 14 2015 Win64" ..`  
   To detect the Java version, use `java -version`
+
+Tested on:
+* Windows (10) with Visual Studio 2015, 2013 and Oracle JDK.
+* Linux (Ubuntu 15.10, Debian) with gcc and OpenJDK or Oracle JDK.
+* MacOSX (10.11) with clang and Oracle JDK.
