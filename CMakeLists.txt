@@ -18,7 +18,7 @@ swig_add_module(
 )
 
 # For convenience we copy the dynamic library to the current build folder
-ADD_CUSTOM_COMMAND(
+add_custom_command(
     TARGET example 
     POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_if_different $<TARGET_FILE:example> ${CMAKE_CURRENT_BINARY_DIR}
@@ -40,4 +40,4 @@ add_jar(
     ENTRY_POINT main
 )
 add_dependencies( Main ExampleJNI )
-SET(CMAKE_JAVA_COMPILE_FLAGS "-source" "1.8" "-target" "1.8")
+set( CMAKE_JAVA_COMPILE_FLAGS "-source" "1.8" "-target" "1.8" )
