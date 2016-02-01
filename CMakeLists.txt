@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8)
 
-find_package(Swig REQUIRED)
+find_package(SWIG REQUIRED)
 find_package(Java REQUIRED)
 find_package(JNI REQUIRED)
 include(UseJava)
