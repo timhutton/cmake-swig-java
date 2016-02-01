@@ -9,7 +9,7 @@ Build:
 
 Run:
 
-`java -jar Main.jar`
+`java -Djava.library.path=. -jar Main.jar`
 
 Output:
 
