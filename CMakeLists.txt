@@ -5,38 +5,38 @@ find_package(Java REQUIRED)
 find_package(JNI REQUIRED)
 include(UseJava)
 include(UseSWIG)
+include_directories(${JNI_INCLUDE_DIRS})
 
-set(CMAKE_SWIG_OUTDIR ${CMAKE_CURRENT_BINARY_DIR})
+set( CMAKE_SWIG_OUTDIR ${CMAKE_CURRENT_BINARY_DIR} )
 
-# First build the C++ code into a dynamic library: example.dll (on Windows) or libexample.so (on Linux)
+# Build the C++ code into a dynamic library: example.dll (on Windows) or libexample.so (on Linux)
 swig_add_module(
     example 
     java 
     example.i 
     example.c
 )
-include_directories(${JNI_INCLUDE_DIRS})
 
 # For convenience we copy the dynamic library to the current build folder
 ADD_CUSTOM_COMMAND(
-    TARGET example POST_BUILD
+    TARGET example 
+    POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_if_different $<TARGET_FILE:example> ${CMAKE_CURRENT_BINARY_DIR}
 )
 
-# Then build the Java code into ExampleJNI.jar
+# Build the Java code into ExampleJNI.jar
 add_jar(
-    ExampleJNI 
+    ExampleJNI
+    SOURCES
     ${CMAKE_SWIG_OUTDIR}/example.java
     ${CMAKE_SWIG_OUTDIR}/exampleJNI.java
 )
 add_dependencies( ExampleJNI example )
-SET(ExampleJNI_JAR "${CMAKE_CURRENT_BINARY_DIR}/ExampleJNI_JAR.jar")
 
 # Finally build the demonstration code into Main.jar
 add_jar(
     Main 
-    SOURCES "main.java"
-    INCLUDE_JARS ${ExampleJNI_JAR}
+    SOURCES main.java
     ENTRY_POINT main
 )
 add_dependencies( Main ExampleJNI )
