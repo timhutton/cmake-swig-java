@@ -34,10 +34,11 @@ add_jar(
 add_dependencies( ExampleJNI example )
 
 # Finally build the demonstration code into Main.jar
+
+set(CMAKE_JAVA_JAR_ENTRY_POINT main) 
 add_jar(
     Main 
     SOURCES main.java
     ENTRY_POINT main
 )
 add_dependencies( Main ExampleJNI )
-set( CMAKE_JAVA_COMPILE_FLAGS "-source" "1.8" "-target" "1.8" )
