@@ -26,5 +26,5 @@ Troubleshooting:
 
 Tested on:
 * Windows (10) with Visual Studio 2015, 2013 and Oracle JDK.
-* Linux (Ubuntu 15.10, 14.04, Debian) with gcc and OpenJDK or Oracle JDK.
+* Linux (Ubuntu 15.10, 14.04; Debian 7, 8) with gcc and OpenJDK or Oracle JDK.
 * MacOSX (10.11) with clang and Oracle JDK.
